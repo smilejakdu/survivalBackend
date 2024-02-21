@@ -53,9 +53,8 @@ public class PostService {
     }
 
     public PostDto deletePost(Long id) {
-        return postDtos.stream()
-                .filter(post -> post.getId().equals(id))
-                .findFirst()
-                .orElseThrow();
+        PostDto found = findPostDto(String.valueOf(id));
+        postDtos.remove(found);
+        return found;
     }
 }
